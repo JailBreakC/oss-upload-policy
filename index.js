@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var policy = require('./lib');
-app.set('port', 80);
+app.set('port', 8080);
 
 var cors = function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
