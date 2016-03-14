@@ -2,3 +2,7 @@ key.json
 node_modules/
 npm-debug.log
 log
+
+pm2*
+
+**/.DS_Store

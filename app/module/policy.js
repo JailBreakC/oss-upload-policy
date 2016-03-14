@@ -1,7 +1,6 @@
-var KEY = require('../key');
-var util = require('./util');
-var Base64 = util.Base64;
-var Crypto = util.Crypto;
+var KEY = require('../../key');
+var Base64 = require('../utils/base64');
+var Crypto = require('../utils/crypto');
 var moment = require('moment');
 module.exports = {
     policy: function (req, res) {
