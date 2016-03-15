@@ -21,7 +21,7 @@ var messageSchema = new mongoose.Schema({
 });
 
 messageSchema.static('safeFind', function (callback) {
-    return this.find({ deleted: false }, callback);
+    return this.find({ deleted: false }).sort({'createdAt':-1}).exec(callback);
 });
 
 module.exports = mongoose.model('message', messageSchema);
