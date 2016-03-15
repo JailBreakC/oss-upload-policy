@@ -46,6 +46,37 @@ module.exports = {
 			});
 		})
 	},
+	getLocation: function(req, res) {
+		function getClientIp(req) {
+	        return (req.headers['x-forwarded-for'] ||
+	        req.connection.remoteAddress ||
+	        req.socket.remoteAddress ||
+	        req.connection.socket.remoteAddress).split(':').pop();
+	    };
+
+		var ip = getClientIp(req);
+		console.log(ip);
+		request.get(taobaoIP)
+			.query({
+				ip: ip
+			})
+			.end(function(err, getReq) {
+				var body = JSON.parse(getReq.text);
+				if(err) {
+					res.json({
+						flag: false,
+						error: 'ip服务错误'
+					})
+					return;
+				}
+				res.json({
+					flag: true,
+					data: {
+						'location': body.data
+					}
+				})
+			})
+	},
 	restore: function(req, res) {
 
 		var text = fs.readFileSync(path.join(__dirname,'../dd.csv'), "utf8");

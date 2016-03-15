@@ -11,6 +11,9 @@ router.route('/msg')
 	.get(message.gets)
 	.post(message.add);
 
+router.route('/mylocation')
+	.get(message.getLocation);
+
 // router.route('/restore')
 // 	.get(message.restore);
 
