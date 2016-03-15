@@ -15,6 +15,7 @@ var messageSchema = new mongoose.Schema({
     loc : String,
     weither_icon : String,
     img : String,
+    city: String,
     createdAt:  { type: Date, default: Date.now },
     deletedAt:  { type: Date, default: Date.now }
 });

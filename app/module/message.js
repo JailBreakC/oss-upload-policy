@@ -1,8 +1,9 @@
 var MessageModel = require('../model/message');
+var request = require('superagent');
 
 var fs = require('fs');
 var path = require('path');
-
+var taobaoIP = 'http://ip.taobao.com/service/getIpInfo.php'
 
 module.exports = {
 	add: function(req, res) {
@@ -67,7 +68,6 @@ module.exports = {
 			dataObj['weither_icon'] = deparr[11];
 			dataObj['img'] = deparr[12];
 			data.push(dataObj);
-
 			var _message = new MessageModel(dataObj);
 
 	        _message.save(function (err) {

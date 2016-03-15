@@ -11,8 +11,8 @@ router.route('/msg')
 	.get(message.gets)
 	.post(message.add);
 
-// router.route('/restore')
-// 	.get(message.restore);
+router.route('/restore')
+	.get(message.restore);
 
 
 module.exports = function(app) {
