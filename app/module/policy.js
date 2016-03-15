@@ -17,14 +17,8 @@ module.exports = {
                 ["content-length-range", 0, MAX_FILE_SIZE] // 设置上传文件的大小限制
             ]
         };
-        //console.log(policyText);
 
-        // var callback = {
-        //     'callbackUrl': 'http://5.vgee.sinaapp.com/test.php',
-        //     "callbackBody":"bucket=${bucket}&object=${object}&etag=${etag}&size=${size}&mimeType=${mimeType}&imageInfo.height=${imageInfo.height}&imageInfo.width=${imageInfo.width}&imageInfo.format=${imageInfo.format}"
-        // }
-        //var callbackStr = Base64.encode(JSON.stringify(callback))
-        //policyText.conditions.push({"callback": callbackStr})
+        
         var policyBase64 = Base64.encode(JSON.stringify(policyText))
         var message = policyBase64
         var bytes = Crypto.HMAC(Crypto.SHA1, message, accesskey, { asBytes: true }) ;
