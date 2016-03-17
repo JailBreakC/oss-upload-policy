@@ -9,7 +9,8 @@ router.route('/policy')
 
 router.route('/msg')
 	.get(message.gets)
-	.post(message.add);
+	.post(message.add)
+	.delete(message.del);
 
 router.route('/mylocation')
 	.get(message.getLocation);
