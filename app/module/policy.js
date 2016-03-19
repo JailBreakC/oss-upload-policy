@@ -6,7 +6,7 @@ module.exports = {
     policy: function (req, res) {
 
         var MAX_FILE_SIZE = 10 * 1024 * 1000; //3MB
-        var TIME = moment().utc().add(8, 'hours').add(30, 'minutes').format("YYYY-MM-DD[T]hh:mm:ss[.000Z]");//30分钟过期
+        var TIME = moment().utc().add(1, 'days').add(30, 'minutes').format("YYYY-MM-DD[T]hh:mm:ss[.000Z]");//30分钟过期
 
         var accessid= KEY.AK;
         var accesskey= KEY.SK;
