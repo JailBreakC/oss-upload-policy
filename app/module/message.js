@@ -31,7 +31,13 @@ module.exports = {
         });
     },
     gets: function(req, res) {
-        MessageModel.safeFind(function(err, result) {
+        var page = req.query.page - 0 || 1;
+        var count = req.query.count - 0 || 5;
+
+        MessageModel.safeFind({
+            page,
+            count
+        },function(err, result, total) {
             if(err) {
                 res.json({
                     flag: false,
@@ -42,6 +48,11 @@ module.exports = {
 
             res.json({
                 flag: true,
+                navigator: {
+                    page: page,
+                    count: count > total ? total : count,
+                    total: total
+                },
                 data: result
             });
         })

@@ -20,8 +20,13 @@ var messageSchema = new mongoose.Schema({
     deletedAt:  { type: Date, default: Date.now }
 });
 
-messageSchema.static('safeFind', function (callback) {
-    return this.find({ deleted: false }).sort({'createdAt':-1}).exec(callback);
+messageSchema.static('safeFind', function (params, callback) {
+    var _this = this;
+    this.count({ deleted: false }, function(err, count) {
+        return _this.find({ deleted: false }).sort({'createdAt':-1}).skip((params.page - 1) * params.count).limit(params.count).exec(function(err, result) {
+            callback(err, result, count);   
+        });
+    });
 });
 
 module.exports = mongoose.model('message', messageSchema);
